@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <script>
+            const theme = localStorage.getItem("theme");
+            if (theme === "dark") {
+                document.documentElement.classList.add("dark");
+            } else if (theme === "light") {
+                document.documentElement.classList.remove("dark");
+            }
+        </script>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/src/assets/img/logoObserva.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Observa Los Rios 2037</title>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="module" src="/src/main.jsx"></script>
+    </body>
+</html>
