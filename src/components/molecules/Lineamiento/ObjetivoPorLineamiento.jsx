@@ -33,7 +33,7 @@ function ObjetivoPorLineamiento({ lineamientoId, onChange }) {
     return (
         <div className="space-y-3">
             <div>
-                <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Objetivos Estrategicos</h2>
+                <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Objetivos Estratégicos</h2>
                 <select 
                     id="select-objetivo"
                     value={selectedObjetivo} 

@@ -89,9 +89,22 @@ export const IndicadoresLineamiento = () => {
         setSelectedIndicador('');
     };
 
+
     const handleMetaChange = (id) => {
         setSelectedMeta(id);
         setSelectedIndicador('');
+    };
+
+    // Scroll y focus a DatosIndicador al seleccionar un indicador
+    const handleIndicadorChange = (id) => {
+        setSelectedIndicador(id);
+        setTimeout(() => {
+            const section = document.getElementById('datos-indicador-section');
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                section.focus();
+            }
+        }, 100);
     };
 
     return (
@@ -99,7 +112,7 @@ export const IndicadoresLineamiento = () => {
         <section className="bg-white dark:bg-gray-900">
             <ToastContainer/>
             
-            <div className="gap-8 items-start py-2 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-3 lg:py-8 lg:px-6">
+            <div className="gap-13 items-start py-2 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-3 lg:py-8 lg:px-6">
                 <div className="space-y-4">
                     <SelectLineamiento onChange={handleLineamientoChange} />
                 </div>
@@ -110,11 +123,11 @@ export const IndicadoresLineamiento = () => {
                 </div>
                 
                 <div className="space-y-4">
-                    <IndicadorPorMeta metaId={selectedMeta} onChange={setSelectedIndicador}/>
+                    <IndicadorPorMeta metaId={selectedMeta} onChange={handleIndicadorChange}/>
                 </div>
             </div>
             
-            <div className="gap-16 items-center py-2 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-1 lg:py-4 lg:px-6">
+            <div id="datos-indicador-section" tabIndex="-1" className="gap-16 items-center py-2 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-1 lg:py-4 lg:px-6 focus:outline-none">
                 <DatosIndicador indicadorId={selectedIndicador} />
             </div>
             
