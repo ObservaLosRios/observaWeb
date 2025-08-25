@@ -66,7 +66,7 @@ export default function OrganizacionCER() {
               <div className="flex flex-col items-start space-y-4">
                   <img src={logoCER} alt="Logo" className="w-60 h-20 " />
                   <h2 className="text-2xl font-bold">Equipo CER</h2>
-                  <p className="text-slate-900">
+                  <p className="text-slate-900 text-justify">
                     Entidad responsable de la ejecución técnica del estudio, liderando el diseño metodológico, la elaboración de indicadores, el desarrollo de la plataforma digital y el acompañamiento estratégico para la implementación, seguimiento y evaluación de la Política Regional de Fomento Productivo, Emprendimiento e Innovación.
                   </p>
               </div>

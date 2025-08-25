@@ -31,7 +31,7 @@ export default function OrganizacionCRDP() {
         <div className="flex flex-col items-start space-y-4">
           <img src={logoCRDP} alt="Logo" className="w-35 h-10" />
           <h2 className="text-2xl font-bold">Equipo CRDP</h2>
-          <p className="text-slate-900">
+          <p className="text-slate-900 text-justify">
             Mandatada por el Gobierno Regional de Los Ríos y su Consejo Regional, la CRDP actúa como organismo técnico y articulador del ecosistema regional de fomento. En el marco del proyecto Observa Los Ríos, cumple el rol de institución mandante, encargada de velar por el cumplimiento de los objetivos del estudio y la coherencia con la Política Regional de Fomento Productivo, Emprendimiento e Innovación.
           </p>
         </div>

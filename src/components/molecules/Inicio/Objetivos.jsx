@@ -32,7 +32,7 @@ export default function Objetivos() {
           </li>
           <li>Generar e implementar una estrategia comunicacional para la Política de Fomento.</li>
         </ul>
-        <p className="">El <strong>Gobierno Regional de Los Ríos</strong> junto a su <strong>Consejo Regional</strong> mandatan el proyecto <strong>Observa Los Ríos</strong> a través de la <strong>Corporación Regional de Desarrollo Productivo de la Región de los Ríos</strong>, cuyo estudio es realizado por el <u>Centro de Estudios Regionales de la Universidad Austral de Chile</u>.(CÓDIGO BIP 40035171)</p>
+        <p className="">El <strong>Gobierno Regional de Los Ríos</strong> junto a su <strong>Consejo Regional</strong> mandatan el proyecto <strong>Observa Los Ríos</strong> a través de la <strong>Corporación Regional de Desarrollo Productivo de la Región de los Ríos</strong>, cuyo estudio es realizado por el <u>Centro de Estudios Regionales de la Universidad Austral de Chile</u>.</p>
       </div>
       <div className="w-full max-w-3xl mx-auto text-center">
         <CarruselSlide src={videos[index]} />

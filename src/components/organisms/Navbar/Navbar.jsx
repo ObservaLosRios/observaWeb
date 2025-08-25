@@ -21,7 +21,7 @@ export default function Navbar() {
               alt="Logo"
             />
             <span className="self-center text-2xl font-semibold whitespace-nowrap text-slate-900">
-              Observa Los Ríos 2037
+              Observa Los Ríos
             </span>
           </Link>
 

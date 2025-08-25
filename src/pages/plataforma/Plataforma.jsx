@@ -120,7 +120,7 @@ export const Plataforma = () => {
                 <section className="bg-white dark:bg-gray-900">
                     <div className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-1 lg:py-16 lg:px-6">
                         <div className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
-                            <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Presentación - ¿Qué es la plataforma?</h2>
+                            <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Presentación Plataforma</h2>
                             <p className="mb-4 text-justify">
                                 Esta plataforma ha sido diseñada para acompañar el desarrollo y la implementación de la 
                                 Política Regional de Fomento de la Región de Los Ríos (2021–2026), 
@@ -139,7 +139,7 @@ export const Plataforma = () => {
                         </div>
                     </div>
                 </section>
-                
+                <hr className="border-gray-800" />
                 <section className="bg-white dark:bg-gray-900">
                     <div className="items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-1 lg:py-16 lg:px-6">
                         <div className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
@@ -147,7 +147,7 @@ export const Plataforma = () => {
                         </div>
                     </div>
                 </section>
-                
+                <hr className="border-gray-800" />
                 <section id="planesIniciativas" className="bg-white dark:bg-gray-900">
                     <div className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-1 lg:py-16 lg:px-6">
                         <div className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
@@ -180,7 +180,7 @@ export const Plataforma = () => {
                             </div>
                         </div>
                     </div>
-                </section>                
+                </section>
             </main>
 
             {isModalOpen && (
@@ -352,7 +352,7 @@ export const Plataforma = () => {
                                 </div>
                             ) : (
                                 <div className="text-center py-8 text-gray-500">
-                                    No se encontraron planes para este sector.
+                                    Plan en elaboración
                                 </div>
                             )}
                         </div>

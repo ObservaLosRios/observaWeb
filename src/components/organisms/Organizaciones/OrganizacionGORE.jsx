@@ -47,7 +47,7 @@ export default function OrganizacionGORE() {
         <div className="flex flex-col items-start space-y-4">
           <img src={logoGORE} alt="Logo" className="w-30 h-20" />
           <h2 className="text-2xl font-bold">Equipo GORE</h2>
-          <p className="text-slate-900">
+          <p className="text-slate-900 text-justify">
             El Gobierno Regional tiene la misión de liderar de manera integrada el desarrollo de la Región de Los Ríos, acorde a principios de participación, equidad, integración territorial y sustentabilidad. Su objetivo es mejorar la calidad de vida y el bienestar de sus habitantes, mediante la formulación e implementación de instrumentos de planificación, coordinación y gestión de la inversión pública. En el marco del proyecto Observa Los Ríos, el GORE financia la iniciativa a través del Fondo de Innovación para la Competitividad (FIC), reafirmando su compromiso con una gestión regional basada en evidencia y datos.
           </p>
         </div>

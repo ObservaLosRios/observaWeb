@@ -1,5 +1,5 @@
+
 import React from 'react';
-import '../../../assets/css/CapsuleFlow.css';
 
 const CapsuleFlow = () => {
   const steps = [
@@ -10,16 +10,21 @@ const CapsuleFlow = () => {
   ];
 
   return (
-    <div className="capsule-flow-container">
+    <div className="flex flex-wrap justify-center items-center gap-2">
       {steps.map((step, index) => (
         <React.Fragment key={index}>
-          <div className="capsule-wrapper">
-            <div className="capsule" data-tooltip={step.tooltip}>
+          <div className="block p-4 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 w-64 min-h-[140px] flex flex-col justify-center items-center">
+            <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
               {step.text}
-            </div>
+            </h5>
+            <p className="font-normal text-gray-700 dark:text-gray-400 text-justify text-sm">
+              {step.tooltip}
+            </p>
           </div>
           {index < steps.length - 1 && (
-            <div className="arrow">→</div>
+            <div className="flex items-center mx-2">
+              <span className="text-3xl text-gray-500 dark:text-gray-400">→</span>
+            </div>
           )}
         </React.Fragment>
       ))}

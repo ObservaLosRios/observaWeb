@@ -27,7 +27,12 @@ export const SesionesGobernanza = () => {
                         <div className="gap-8 items-center py-2 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-1 lg:py-8 lg:px-6">
                             <TituloPolitica centered>Sesiones de Gobernanza</TituloPolitica>
                             <TextoPolitica>
-                                La gobernanza de la plataforma se basa en principios de transparencia, participación y colaboración. Se busca fomentar un entorno en el que todos los actores involucrados puedan contribuir y beneficiarse de manera equitativa.
+                                El seguimiento de la Política Regional de Fomento Productivo, Emprendimiento e
+Innovación considera instancias de gobernanza que permiten articular la participación de
+actores públicos, privados, académicos y sociales en la toma de decisiones. Estas sesiones,
+promovidas en el marco del Comité Estratégico de Desarrollo Económico Sostenible (DES-
+ERD) y su Secretaría Técnica Ampliada, buscan validar instrumentos, priorizar inversiones
+y fortalecer la coordinación regional en torno a los planes de inversión sectoriales.
                             </TextoPolitica>
                         </div>
                         <div>
@@ -69,9 +74,11 @@ export const SesionesGobernanza = () => {
                                                     <td className="px-6 py-4 text-sm text-gray-700 dark:text-gray-300">
                                                         {session.lugar || 'No especificado'}
                                                     </td>
-                                                    <td className="px-6 py-4 text-sm text-gray-700 dark:text-gray-300 text-justify max-w-xs">
-                                                        <div className="line-clamp-3">
-                                                            {session.descripcion || 'Sin descripción'}
+                                                    <td className="px-6 py-4 text-sm text-gray-700 dark:text-gray-300 align-middle">
+                                                        <div className="flex items-center h-full">
+                                                            <p className="w-full text-justify m-0">
+                                                                {session.descripcion || 'Sin descripción'}
+                                                            </p>
                                                         </div>
                                                     </td>
                                                     <td className="px-6 py-4 text-center">
