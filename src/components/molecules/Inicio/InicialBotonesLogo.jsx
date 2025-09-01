@@ -14,7 +14,7 @@ export default function InicialBotonesLogo() {
         <img src={logoImagen} alt="Logo" className="w-100 h-100 rounded-full shadow-lg" />
         <div className="flex space-x-4">
           <Boton text="Política de Fomento" to="/proyecto/politica" />
-          <Boton text="Plataforma" to="/plataforma" />
+          {/* <Boton text="Plataforma" to="/plataforma"/> */}
         </div>
       </div>
     </div>

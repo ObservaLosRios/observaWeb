@@ -18,7 +18,7 @@ const enlaces = [
   },
 
   { to: "/noticias", etiqueta: "Noticias" },
-  { to: "/plataforma", etiqueta: "Plataforma" },
+  //{ to: "/plataforma", etiqueta: "Plataforma" },
 ];
 
 export default function MenuPrincipal() {
