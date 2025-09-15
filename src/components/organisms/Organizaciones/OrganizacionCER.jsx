@@ -8,54 +8,66 @@ import America from '@/assets/img/America.png';
 import Priscilla from '@/assets/img/Priscilla.png';
 import Diego from '@/assets/img/Diego.png';
 import Valentina from '@/assets/img/Valentina.png';
-import logoCER from '@/assets/img/logo_cer_uach_negro.png'; 
+import logoCER from '@/assets/img/logo_cer_uach_negro.png';
+import FernandoDeLaCosta from '@/assets/img/FernandoDeLaCosta.jpg';
+import BrunoSM from '@/assets/img/BrunoSM.jpeg';
 
 const miembros = [
-  {
-    name: 'Dr. Egon Montecinos',
-    role: 'Director Alterno / Académico Asesor',
-    image: Egon, // URL de la imagen del director
-  },
-  {
-    name: 'Dra. Verónica Fuentes',
-    role: 'Académica Asesora',
-    image: Veronica,
-  },
-  {
-    name: 'Dr. Fernando de la Costa',
-    role: 'Académico Asesor',
-    // image: Veronica,
-  },
-  {
-    name: 'Valentina Gatica',
-    role: 'Coordinadora Ejecutiva CER UACh',
-    image: Valentina,
-  },
-  {
-    name: 'Bruno Soto',
-    role: 'Profesional Analista de Datos',
-    image: Bruno,
-  },
-  {
-    name: 'Francisco Alarcón',
-    role: 'Profesional Analista de Datos',
-    image: Francisco,
-  },
-  {
-    name: 'América Flández',
-    role: 'Profesional Administrativa',
-    image: America,
-  },
-  {
-    name: 'Priscilla Torres',
-    role: 'Profesional de Comunicaciones',
-    image: Priscilla,
-  },
-  {
-    name: 'Diego Araneda',
-    role: 'Programador',
-    image: Diego,
-  },
+    {
+        name: 'Dra. Verónica Fuentes',
+        role: 'Académica / Directora del estudio',
+        image: Veronica,
+    },
+    {
+        name: 'Dr. Egon Montecinos',
+        role: 'Académico / Director alterno del estudio',
+        image: Egon, // URL de la imagen del director
+    },
+    {
+        name: 'René Reyes',
+        role: 'Académico Asesor',
+        image: Avatar
+    },
+    {
+        name: 'Dr. Fernando de la Costa',
+        role: 'Académico Asesor',
+        image: FernandoDeLaCosta,
+    },
+    {
+        name: 'Valentina Gatica',
+        role: 'Coordinadora Ejecutiva CER UACh',
+        image: Valentina,
+    },
+    {
+        name: 'Francisco Alarcón',
+        role: 'Coordinador de estudio / Profesional Analista de datos',
+        image: Francisco,
+    },
+    {
+        name: 'Bruno Soto',
+        role: 'Profesional Analista de Datos',
+        image: Bruno,
+    },
+    {
+        name: 'Diego Araneda',
+        role: 'Profesional Desarrollador',
+        image: Diego,
+    },
+    {
+        name: 'Bruno San Martín',
+        role: 'Profesional Científico de Datos',
+        image: BrunoSM,
+    },
+    {
+        name: 'América Flández',
+        role: 'Profesional Administrativa',
+        image: America,
+    },
+    {
+        name: 'Priscilla Torres',
+        role: 'Profesional Comunicaciones',
+        image: Priscilla,
+    },
 ];
 
 export default function OrganizacionCER() {
