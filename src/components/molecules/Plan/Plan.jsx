@@ -120,9 +120,11 @@ const Plan = () => {
                             </h2>
                             <div className="space-y-4">
                                 <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
-                                    <h3 className="font-medium text-blue-900 dark:text-blue-300 mb-2">
-                                        Iniciativas en ejecución actualmente
-                                    </h3>
+                                    <p className="font-medium text-blue-900 dark:text-blue-300 mb-2 text-justify">
+                                        Son proyectos financiados mediante el Programa Público de Inversiones Regionales (PROPIR), que
+                                        reflejan la ejecución anual de recursos en el marco de la Política Regional de Fomento Productivo,
+                                        Emprendimiento e Innovación.
+                                    </p>
                                 </div>
                                 
                                 {iniciativasPriorizadas && iniciativasPriorizadas.length > 0 ? (
