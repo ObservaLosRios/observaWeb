@@ -1,7 +1,196 @@
 import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import parse from 'html-react-parser';
 import { fetchNoticias, fetchNoticiaById } from '../utils/api';
+
+// Función para detectar si el contenido es HTML
+const isHTMLContent = (content) => {
+    if (!content || typeof content !== 'string') return false;
+    
+    // Detectar tags HTML comunes (más específico para evitar falsos positivos)
+    const commonHtmlTags = /<(p|div|span|h[1-6]|strong|b|em|i|ul|ol|li|br|img|a|blockquote|table|tr|td|th)(\s[^>]*)?>/i;
+    const htmlEntityRegex = /&[a-zA-Z][a-zA-Z0-9]*;/;
+    
+    // Verificar si tiene estructura HTML típica de rich text editor
+    const hasHTMLStructure = commonHtmlTags.test(content);
+    const hasHTMLEntities = htmlEntityRegex.test(content);
+    
+    // También verificar si contiene múltiples tags HTML
+    const htmlTagCount = (content.match(/<[^>]+>/g) || []).length;
+    
+    return hasHTMLStructure || (hasHTMLEntities && htmlTagCount > 0);
+};
+
+// Función para procesar imágenes base64 en contenido HTML
+const processBase64Images = (htmlContent) => {
+    if (!htmlContent || typeof htmlContent !== 'string') return htmlContent;
+    
+    try {
+        // Limpiar y procesar el HTML
+        let processedContent = htmlContent;
+        
+        // Reemplazar data URLs de imágenes para asegurar que se rendericen correctamente
+        processedContent = processedContent.replace(
+            /<img([^>]*?)src=["'](data:image\/[^;]+;base64,[^"']+)["']([^>]*?)>/gi,
+            (match, beforeSrc, dataSrc, afterSrc) => {
+                // Verificar que la imagen base64 sea válida
+                if (dataSrc && dataSrc.startsWith('data:image/')) {
+                    return `<img${beforeSrc}src="${dataSrc}"${afterSrc} style="max-width: 100%; height: auto; border-radius: 8px; margin: 16px 0;">`;
+                }
+                return match;
+            }
+        );
+        
+        // Limpiar scripts y otros elementos potencialmente problemáticos
+        processedContent = processedContent.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+        processedContent = processedContent.replace(/<link\b[^>]*>/gi, '');
+        processedContent = processedContent.replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '');
+        
+        // Limpiar elementos HTML no válidos que pueden causar errores
+        processedContent = processedContent.replace(/<text\b[^>]*>/gi, '');
+        processedContent = processedContent.replace(/<\/text>/gi, '');
+        processedContent = processedContent.replace(/<xml\b[^>]*>/gi, '');
+        processedContent = processedContent.replace(/<\/xml>/gi, '');
+        processedContent = processedContent.replace(/<o:p\b[^>]*>/gi, '');
+        processedContent = processedContent.replace(/<\/o:p>/gi, '');
+        
+        // Limpiar elementos de documento completo que no necesitamos
+        processedContent = processedContent.replace(/<\/?html\b[^>]*>/gi, '');
+        processedContent = processedContent.replace(/<\/?head\b[^>]*>/gi, '');
+        processedContent = processedContent.replace(/<\/?body\b[^>]*>/gi, '');
+        processedContent = processedContent.replace(/<meta\b[^>]*>/gi, '');
+        
+        return processedContent;
+    } catch (error) {
+        console.error('Error processing base64 images:', error);
+        return htmlContent;
+    }
+};
+
+// Componente para renderizar contenido HTML o Markdown
+const ContentRenderer = ({ content }) => {
+    if (!content) return <p className="text-gray-600">Sin contenido disponible.</p>;
+
+    const isHTML = isHTMLContent(content);
+    
+    if (isHTML) {
+        try {
+            // Procesar el HTML para manejar imágenes base64
+            const processedContent = processBase64Images(content);
+            
+            return (
+                <div 
+                    className="text-gray-700 dark:text-gray-300"
+                    style={{
+                        lineHeight: '1.625',
+                        textAlign: 'justify'
+                    }}
+                >
+                    <style dangerouslySetInnerHTML={{
+                        __html: `
+                            .html-content p {
+                                color: #c4bdbdff;
+                                margin-bottom: 1rem;
+                                line-height: 1.625;
+                                text-align: justify;
+                            }
+                            .html-content strong {
+                                font-weight: bold;
+                            }
+                            .html-content em {
+                                font-style: italic;
+                            }
+                            .html-content img {
+                                max-width: 100%;
+                                height: auto;
+                                border-radius: 8px;
+                                margin: 16px 0;
+                                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+                            }
+                            .html-content div {
+                                margin-bottom: 0.5rem;
+                            }
+                            .dark .html-content p {
+                                color: #c4bdbdff;
+                            }
+                        `
+                    }} />
+                    <div className="html-content">
+                        {parse(processedContent)}
+                    </div>
+                </div>
+            );
+        } catch (error) {
+            console.error('Error parsing HTML content:', error);
+            // Fallback: mostrar el contenido como texto plano si hay error
+            return (
+                <div className="prose prose-lg max-w-none dark:prose-invert">
+                    <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
+                        <p className="text-yellow-700">
+                            Hubo un problema al procesar el contenido HTML. Mostrando contenido sin formato:
+                        </p>
+                    </div>
+                    <pre className="whitespace-pre-wrap text-gray-700 dark:text-gray-300 text-justify">
+                        {content}
+                    </pre>
+                </div>
+            );
+        }
+    } else {
+        // Renderizar como Markdown
+        return (
+            <div className="prose prose-lg max-w-none dark:prose-invert">
+                <ReactMarkdown 
+                    remarkPlugins={[remarkGfm]}
+                    components={{
+                        h1: ({children}) => <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">{children}</h1>,
+                        h2: ({children}) => <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-3 mt-6">{children}</h2>,
+                        h3: ({children}) => <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2 mt-4">{children}</h3>,
+                        p: ({children}) => <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed text-justify">{children}</p>,
+                        ul: ({children}) => <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 mb-4 space-y-1">{children}</ul>,
+                        ol: ({children}) => <ol className="list-decimal list-inside text-gray-700 dark:text-gray-300 mb-4 space-y-1">{children}</ol>,
+                        li: ({children}) => <li className="text-gray-700 dark:text-gray-300 text-justify">{children}</li>,
+                        blockquote: ({children}) => (
+                            <blockquote className="border-l-4 border-blue-500 pl-4 my-4 italic text-gray-600 dark:text-gray-400 bg-gray-50 dark:bg-gray-700 py-2">
+                                {children}
+                            </blockquote>
+                        ),
+                        code: ({children}) => (
+                            <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-sm font-mono text-gray-800 dark:text-gray-200">
+                                {children}
+                            </code>
+                        ),
+                        pre: ({children}) => (
+                            <pre className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg overflow-x-auto mb-4">
+                                {children}
+                            </pre>
+                        ),
+                        a: ({children, href}) => (
+                            <a 
+                                href={href} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 underline"
+                            >
+                                {children}
+                            </a>
+                        ),
+                        img: ({src, alt}) => (
+                            <img 
+                                src={src} 
+                                alt={alt} 
+                                className="max-w-full h-auto rounded-lg shadow-md my-4"
+                            />
+                        ),
+                    }}
+                >
+                    {content}
+                </ReactMarkdown>
+            </div>
+        );
+    }
+};
 
 export const Noticias = () => {
     const [noticias, setNoticias] = useState([]);
@@ -79,7 +268,7 @@ export const Noticias = () => {
             <div className="flex-1">
                 <section className="bg-white dark:bg-white">
                     <div className="gap-8 items-center py-2 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-1 lg:py-6 lg:px-6">
-                        <div className="mb-2<<<<<<">
+                        <div className="mb-2">
                             <h1 className="mb-4 tracking-tight text-4xl font-bold text-gray-900">Noticias</h1>
                             <p className="text-gray-600 mb-6">
                                 Mantente informado sobre las últimas novedades de la Política Regional de Fomento
@@ -162,7 +351,7 @@ export const Noticias = () => {
                                     <span className="ml-3 text-gray-600">Cargando noticia...</span>
                                 </div>
                             ) : noticiaSeleccionada ? (
-                                <div className="prose prose-lg max-w-none dark:prose-invert">
+                                <div>
                                     {/* Galería de fotos */}
                                     {noticiaSeleccionada.fotos && noticiaSeleccionada.fotos.length > 0 && (
                                         <div className="mb-6">
@@ -212,54 +401,8 @@ export const Noticias = () => {
                                         </div>
                                     )}
 
-                                    {/* Contenido markdown */}
-                                    <ReactMarkdown 
-                                        remarkPlugins={[remarkGfm]}
-                                        components={{
-                                            // Personalizar componentes de markdown
-                                            h1: ({children}) => <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">{children}</h1>,
-                                            h2: ({children}) => <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-3 mt-6">{children}</h2>,
-                                            h3: ({children}) => <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2 mt-4">{children}</h3>,
-                                            p: ({children}) => <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed text-justify">{children}</p>,
-                                            ul: ({children}) => <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 mb-4 space-y-1">{children}</ul>,
-                                            ol: ({children}) => <ol className="list-decimal list-inside text-gray-700 dark:text-gray-300 mb-4 space-y-1">{children}</ol>,
-                                            li: ({children}) => <li className="text-gray-700 dark:text-gray-300 text-justify">{children}</li>,
-                                            blockquote: ({children}) => (
-                                                <blockquote className="border-l-4 border-blue-500 pl-4 my-4 italic text-gray-600 dark:text-gray-400 bg-gray-50 dark:bg-gray-700 py-2">
-                                                    {children}
-                                                </blockquote>
-                                            ),
-                                            code: ({children}) => (
-                                                <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-sm font-mono text-gray-800 dark:text-gray-200">
-                                                    {children}
-                                                </code>
-                                            ),
-                                            pre: ({children}) => (
-                                                <pre className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg overflow-x-auto mb-4">
-                                                    {children}
-                                                </pre>
-                                            ),
-                                            a: ({children, href}) => (
-                                                <a 
-                                                    href={href} 
-                                                    target="_blank" 
-                                                    rel="noopener noreferrer"
-                                                    className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 underline"
-                                                >
-                                                    {children}
-                                                </a>
-                                            ),
-                                            img: ({src, alt}) => (
-                                                <img 
-                                                    src={src} 
-                                                    alt={alt} 
-                                                    className="max-w-full h-auto rounded-lg shadow-md my-4"
-                                                />
-                                            ),
-                                        }}
-                                    >
-                                        {noticiaSeleccionada.contenido}
-                                    </ReactMarkdown>
+                                    {/* Contenido (HTML o Markdown) */}
+                                    <ContentRenderer content={noticiaSeleccionada.contenido} />
                                 </div>
                             ) : (
                                 <div className="text-center py-12">
