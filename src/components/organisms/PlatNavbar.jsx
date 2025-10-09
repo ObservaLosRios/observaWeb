@@ -69,7 +69,7 @@ const PlatNavbar = () => {
                                         <li>
                                             <Link to="indicadoresiniciativa" className="flex items-center text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500 group">
                                                 <span className="sr-only">Indicadores por Iniciativa</span>
-                                                Indicadores Sectoriales
+                                                Indicadores por Planes Sectoriales
                                             </Link>
                                         </li>
                                         <li>
