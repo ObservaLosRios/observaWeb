@@ -260,8 +260,7 @@ Sistema completo de noticias que incluye:
 
 ### **Para más información:**
 - **Centro de Estudios Regionales (CER-UACh)**
-- **Gobierno Regional de Los Ríos**
-- **Centro Regional de Desarrollo Productivo**
+
 
 ### **Reportar Problemas:**
 Si encuentras algún error o problema:
@@ -293,10 +292,6 @@ La plataforma se actualiza regularmente con:
 - Sitios web de instituciones participantes
 - Recursos complementarios
 - Normativas y regulaciones relacionadas
-
----
-
-**🎯 ¡Explora la plataforma y descubre todos los datos e información disponible sobre el desarrollo productivo de la Región de Los Ríos!**
 
 ---
 
