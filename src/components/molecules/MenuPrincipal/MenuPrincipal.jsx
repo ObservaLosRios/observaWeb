@@ -54,7 +54,7 @@ export default function MenuPrincipal() {
               <button
                 type="button"
                 onClick={() => toggleSubmenu(etiqueta)}
-                className="flex items-center text-gray-900 dark:text-white hover:underline transition"
+                className="flex items-center text-white hover:underline transition"
               >
                 {etiqueta}
                 <svg
@@ -69,9 +69,9 @@ export default function MenuPrincipal() {
               </button>
 
               {submenuAbierto === etiqueta && (
-                <ul className="absolute md:left-0 mt-2 w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg z-50 md:block">
+                <ul className="absolute md:left-0 mt-2 w-48 bg-gray-800 border border-gray-700 rounded shadow-lg z-50 md:block">
                   {submenu.map(({ to, etiqueta }) => (
-                    <li key={to} className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <li key={to} className="px-4 py-2 hover:bg-gray-700">
                       <EnlaceNav to={to}>{etiqueta}</EnlaceNav>
                     </li>
                   ))}

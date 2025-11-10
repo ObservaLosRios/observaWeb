@@ -3,6 +3,7 @@ import marcotrabajo1 from '../../assets/img/plataforma/marcodetrabajo/marcotraba
 import marcotrabajo2 from '../../assets/img/plataforma/marcodetrabajo/marcotrabajo2.jpg';
 import marcotrabajo3 from '../../assets/img/plataforma/marcodetrabajo/marcotrabajo3.jpg';
 import marcotrabajo4 from '../../assets/img/plataforma/marcodetrabajo/marcotrabajo4.jpg';
+import CarruselFuentes from '../../components/molecules/CarruselFuentes/CarruselFuentes';
 
 export const Informacion = () => {
     const scrollToSection = (sectionId) => {
@@ -194,12 +195,14 @@ export const Informacion = () => {
                     <hr className="border-gray-800" />
                     <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
                         <h4 id="fuentes-datos" className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Fuentes de datos utilizadas en Observa Los Ríos</h4>
-                        <p className="mb-4 text-gray-900 dark:text-white text-justify">
+                        <p className="mb-8 text-gray-900 dark:text-white text-justify">
                             El sistema de monitoreo del proyecto Observa Los Ríos se apoya en fuentes de datos públicas, oficiales y estratégicas, seleccionadas por su confiabilidad, 
                             cobertura regional y alineación con los objetivos de la Política Regional de Fomento Productivo, Emprendimiento e Innovación. 
-                            Estas fuentes permiten construir indicadores pertinentes, comparables y actualizables. A continuación, se presentan las principales fuentes utilizadas
+                            Estas fuentes permiten construir indicadores pertinentes, comparables y actualizables. A continuación, se presentan las principales fuentes utilizadas:
                         </p>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-4">
+                        
+                        <h5 className="mb-6 text-2xl tracking-tight font-bold text-gray-900 dark:text-white">Fuentes Principales</h5>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-4 mb-12">
                             {[
                                 {
                                     url: "https://www.bcentral.cl/inicio",
@@ -258,6 +261,9 @@ export const Informacion = () => {
                                 </div>
                             ))}
                         </div>
+
+                        <h5 className="mb-6 text-2xl tracking-tight font-bold text-gray-900 dark:text-white">Fuentes Complementarias</h5>
+                        <CarruselFuentes />
                     </div>
                 </section>
                 <hr className="border-gray-800" />

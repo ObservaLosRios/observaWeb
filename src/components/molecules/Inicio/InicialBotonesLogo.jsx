@@ -11,7 +11,7 @@ export default function InicialBotonesLogo() {
         className="w-full h-full object-cover"
       />
       <div className="absolute inset-0 flex flex-col items-center justify-center space-y-6">
-        <img src={logoImagen} alt="Logo" className="w-100 h-100 rounded-full shadow-lg" />
+        <img src={logoImagen} alt="Logo" className="w-96 h-96 rounded-full shadow-lg" />
         <div className="flex space-x-4">
           <Boton text="Política de Fomento" to="/proyecto/politica" />
           <Boton text="Plataforma" to="/plataforma"/>

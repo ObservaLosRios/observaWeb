@@ -5,20 +5,20 @@ import logoCrdp from '@/assets/img/crdp.png';
 import logoGore from '@/assets/img/gore.png';
 
 export const FooterLogo = () => (
-  <div className="flex items-center gap-2 flex-wrap">
+  <div className="flex items-center gap-3 flex-wrap">
     <a href="https://ceruach.cl/" className="flex items-center">
-      <img src={logoObserva} className="w-35 h-auto mb-0" alt="Observa Logo" />
+      <img src={logoObserva} className="h-10 w-auto" alt="Observa Logo" />
     </a>
     <a href="https://www.goredelosrios.cl/" className="flex items-center">
-      <img src={logoGore} className="w-30 h-auto mb-0" alt="Gore Logo" />
+      <img src={logoGore} className="h-10 w-auto" alt="Gore Logo" />
     </a>
     <a href="https://corporacionlosrios.cl/" className="flex items-center">
-      <img src={logoCrdp} className="w-50 h-auto mb-0" alt="CRDP Logo" />
+      <img src={logoCrdp} className="h-12 w-auto" alt="CRDP Logo" />
     </a>
     <a href="https://ceruach.cl/" className="flex items-center">
       <img
         src={logoCer}
-        className="w-60 h-auto mb-0"
+        className="h-14 w-auto"
         alt="CER UACh Logo"
       />
     </a>

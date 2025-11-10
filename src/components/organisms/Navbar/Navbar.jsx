@@ -30,7 +30,7 @@ export default function Navbar() {
       </nav>
 
       {/* Menú secundario */}
-      <nav className="bg-gray-50 dark:bg-gray-700">
+      <nav className="bg-gray-800">
         <div className="max-w-screen-xl px-4 py-3 mx-auto flex items-center">
           <MenuPrincipal />
         </div>

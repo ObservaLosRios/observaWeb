@@ -115,7 +115,7 @@ export const Plataforma = () => {
     };
 
     return (
-        <div className="flex">
+        <div className="flex min-h-screen bg-white dark:bg-gray-900">
             <main className="flex-1">
                 <section className="bg-white dark:bg-gray-900">
                     <div className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-1 lg:py-16 lg:px-6">
@@ -139,7 +139,7 @@ export const Plataforma = () => {
                         </div>
                     </div>
                 </section>
-                <hr className="border-gray-800" />
+                <hr className="border-gray-300 dark:border-gray-700" />
                 <section className="bg-white dark:bg-gray-900">
                     <div className="items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-1 lg:py-16 lg:px-6">
                         <div className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
@@ -147,7 +147,7 @@ export const Plataforma = () => {
                         </div>
                     </div>
                 </section>
-                <hr className="border-gray-800" />
+                <hr className="border-gray-300 dark:border-gray-700" />
                 <section id="planesIniciativas" className="bg-white dark:bg-gray-900">
                     <div className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-1 lg:py-16 lg:px-6">
                         <div className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
@@ -180,7 +180,7 @@ export const Plataforma = () => {
                             </div>
                         </div>
                     </div>
-                </section>
+                </section>                
             </main>
 
             {isModalOpen && (

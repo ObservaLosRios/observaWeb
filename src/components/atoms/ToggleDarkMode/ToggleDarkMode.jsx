@@ -8,7 +8,12 @@ export default function ToggleDarkMode() {
   });
 
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", isDark);
+    const root = document.documentElement;
+    if (isDark) {
+      root.classList.add("dark");
+    } else {
+      root.classList.remove("dark");
+    }
     localStorage.setItem("theme", isDark ? "dark" : "light");
   }, [isDark]);
 
