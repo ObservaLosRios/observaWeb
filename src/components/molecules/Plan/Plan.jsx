@@ -35,9 +35,9 @@ const Plan = () => {
         }
     }, [id, getPlanData]);
 
-    const handleDescargarPDF = (iniciativaId) => {
+    const handleDescargarPDF = (codigoBip) => {
         // Crear URL para descargar PDF
-        const pdfUrl = `${process.env.REACT_APP_API_URL || 'http://localhost:3001'}/api/iniciativas/${iniciativaId}/pdf`;
+        const pdfUrl = `${import.meta.env.VITE_FILE_SERVER || 'http://localhost:3001'}/iniciativas/${codigoBip}.zip`;
         
         // Abrir en nueva ventana o descargar directamente
         window.open(pdfUrl, '_blank');
@@ -45,7 +45,7 @@ const Plan = () => {
         // Alternativa: descargar directamente
         // const link = document.createElement('a');
         // link.href = pdfUrl;
-        // link.download = `plan-${planId}.pdf`;
+        // link.download = `plan-${codigoBip}.pdf`;
         // link.click();
     };
 
@@ -223,7 +223,7 @@ const Plan = () => {
                                                     </td>
                                                     <td className="px-4 py-3 text-sm">
                                                         <button 
-                                                            onClick={() => handleDescargarPDF(iniciativa.id)}
+                                                            onClick={() => handleDescargarPDF(iniciativa.codigoBip)}
                                                             className="inline-flex items-center px-3 py-1 bg-blue-600 hover:bg-green-700 text-white text-xs font-medium rounded transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
                                                         >
                                                             <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
