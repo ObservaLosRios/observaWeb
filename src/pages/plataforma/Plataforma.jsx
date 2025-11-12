@@ -79,7 +79,7 @@ export const Plataforma = () => {
 
     const handleDescargarPDF = (planId) => {
         // Crear URL para descargar PDF
-        const pdfUrl = `${process.env.REACT_APP_API_URL || 'http://localhost:3001'}/api/planes/${planId}/pdf`;
+        const pdfUrl = `${import.meta.env.VITE_FILE_SERVER || 'http://localhost:3001'}/planesInversionSectorial/${planId}.zip`;
         
         // Abrir en nueva ventana o descargar directamente
         window.open(pdfUrl, '_blank');
