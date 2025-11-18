@@ -36,7 +36,7 @@ export const Innovacion = () => {
                     innovacionData.map((item, index) => (
                         <div key={index} className="h-72">
                             <a 
-                                href={item.url} 
+                                href={item.url_pdf} 
                                 target='_blank' 
                                 rel="noopener noreferrer"
                                 className="block h-full p-4 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 flex flex-col transition-colors duration-200"
