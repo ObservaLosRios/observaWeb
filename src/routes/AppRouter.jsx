@@ -25,6 +25,7 @@ import { IndicadoresLineamiento } from '../pages/plataforma/IndicadoresLineamien
 import IndicadoresIniciativa from '../pages/plataforma/IndicadoresIniciativa';
 import IndicadoresEntorno from '../pages/plataforma/IndicadoresEntorno';
 import IndicadoresGeorreferenciados from '../pages/plataforma/IndicadoresGeorreferenciados';
+import { Innovacion } from '../pages/plataforma/Innovacion';
 import { PlanesProvider } from '../context/PlanesContext';
 
 const AppRouter = () => (
@@ -56,6 +57,7 @@ const AppRouter = () => (
             <Route path="indicadoresiniciativa" element={<IndicadoresIniciativa />} />
             <Route path="indicadoresgeorreferenciados" element={<IndicadoresGeorreferenciados />} />
             <Route path="planes/:id" element={<Plan />} />
+            <Route path="innovacion" element= {<Innovacion />} />
             
             {/* Login dentro de plataforma */}
             <Route path='login' element={<LoginLayout />}>

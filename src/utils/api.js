@@ -132,3 +132,11 @@ export async function fetchGobernanza() {
     }
     return response.json();
 }
+
+export async function fetchInnovacionPublica() {
+    const response = await fetch(`${apiUrl}/innovacion-publica`);
+    if (!response.ok) {
+        throw new Error('Error fetching innovación pública');
+    }
+    return response.json();
+}
