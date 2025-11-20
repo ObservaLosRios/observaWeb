@@ -266,7 +266,6 @@ export const IndicadoresIniciativa= () => {
         setError(null);
         try {
             const data = await fetchIniciativasHistoricas(planId);
-            console.log('Datos recibidos:', data);
             setChartData(data);
         } catch (err) {
             setError(err.message);
