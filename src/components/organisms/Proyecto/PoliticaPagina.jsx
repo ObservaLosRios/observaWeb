@@ -54,7 +54,7 @@ export default function PoliticaPagina() {
           </TextoPolitica>
           <div className="flex justify-center">
             <BotonDescarga
-              fileUrl="http://38.7.201.62:8080/files/upload/PoliticaFomento.pdf"  // o ruta pública o generada
+              fileUrl="https://server.observalosrios.cl:8443/upload/PoliticaFomento.pdf"  // o ruta pública o generada
               fileName="PoliticaFomento.pdf"
               label="Descargar Política de Fomento"
             />
