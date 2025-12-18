@@ -17,7 +17,7 @@ const CapsuleFlow = () => {
             <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
               {step.text}
             </h5>
-            <p className="font-normal text-gray-700 dark:text-gray-400 text-justify text-sm">
+            <p className="font-normal text-gray-700 dark:text-gray-400 text-left text-sm">
               {step.tooltip}
             </p>
           </div>

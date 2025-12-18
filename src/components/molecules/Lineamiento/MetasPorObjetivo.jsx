@@ -37,7 +37,7 @@ function MetasPorObjetivo({ objetivoId, onChange }) {
         <>
         <div className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
             <h3 className="mb-4 tracking-tight font-extrabold text-gray-900 dark:text-white">Meta</h3>
-            <p className="mt-2 text-gray-700 dark:text-gray-200 text-justify">
+            <p className="mt-2 text-gray-700 dark:text-gray-200 text-left">
                 {descripcion}
             </p>
         </div>
